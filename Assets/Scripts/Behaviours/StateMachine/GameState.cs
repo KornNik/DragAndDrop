@@ -10,14 +10,7 @@ namespace Behaviours
         private BaseInputs _inputs;
         public GameState(GameStateController stateController) : base(stateController)
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                _inputs = new TouchScreenInput();
-            }
-            else
-            {
-                _inputs = new MouseInput();
-            }
+            _inputs = new InputFactory().GetInputs();
         }
 
         public override void EnterState()

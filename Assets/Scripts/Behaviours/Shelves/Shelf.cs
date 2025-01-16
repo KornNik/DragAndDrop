@@ -7,28 +7,6 @@ namespace Behaviours
         [SerializeField] private Collider2D _fitCollider;
         [SerializeField] private ShelfSpace[] _shelfSpaces;
 
-        private void Awake()
-        {
-
-        }
-
-        public void PutObjectOnShelf(IItem item)
-        {
-            if (IsHasSpace())
-            {
-                var space = GetClosestEmptyShelfSpace();
-                item.PutOnShelf(space, this);
-                space.CurrentItem = item;
-            }
-        }
-
-        public void RemoveFromShelf(IItem item)
-        {
-            ShelfSpace space = GetShelfSpaceByItem(item);
-            space.CurrentItem = null;
-            item.RemoveFromShelf();
-        }
-
         private bool IsHasSpace()
         {
             for (int i = 0; i < _shelfSpaces.Length; i++)
@@ -62,5 +40,26 @@ namespace Behaviours
             }
             return null;
         }
+
+
+        #region IShelf
+
+        public void PutObjectOnShelf(IItem item)
+        {
+            if (IsHasSpace())
+            {
+                var space = GetClosestEmptyShelfSpace();
+                item.PutOnShelf(space, this);
+                space.CurrentItem = item;
+            }
+        }
+        public void RemoveFromShelf(IItem item)
+        {
+            ShelfSpace space = GetShelfSpaceByItem(item);
+            space.CurrentItem = null;
+            item.RemoveFromShelf();
+        }
+
+        #endregion
     }
 }

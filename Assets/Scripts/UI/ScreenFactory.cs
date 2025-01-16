@@ -10,7 +10,6 @@ namespace UI
         private GameMenu _gameMenu;
         private MainMenu _mainMenu;
         private PauseMenu _pauseMenu;
-        private LoadingScreen _loadingScreen;
 
 
         public ScreenFactory()
@@ -53,17 +52,6 @@ namespace UI
                     Quaternion.identity, _canvas.transform).GetComponent<PauseMenu>();
             }
             return _pauseMenu;
-        }
-        public LoadingScreen GetLoadingScreen()
-        {
-            if (_loadingScreen == null)
-            {
-                var resources = Services.Instance.DatasBundle.ServicesObject.
-                    GetData<DataResourcePrefabs>().GetScreenPrefab(ScreenTypes.LoadingScreen);
-                _loadingScreen = Object.Instantiate(resources, _canvas.transform.position,
-                    Quaternion.identity, _canvas.transform).GetComponent<LoadingScreen>();
-            }
-            return _loadingScreen;
         }
     }
 }
