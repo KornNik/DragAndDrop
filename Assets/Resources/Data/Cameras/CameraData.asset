@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b550c6aec342d745acec860dd99b3e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a56ed7fc043604ba40b58a0d7eeaf0, type: 3}
   m_Name: CameraData
   m_EditorClassIdentifier: 
-  _mainCameraPosition: {x: 0, y: 0, z: -20}
+  _cameraMoveDuration: 0.3
+  _cameraDistance: 0
+  _cameraRotationSpeed: 0
+  _mainCameraDefaultPosition: {x: 0, y: 0, z: -1}
+  _ortographicSize: 9

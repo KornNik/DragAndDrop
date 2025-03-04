@@ -55,7 +55,8 @@ namespace Behaviours
             _level = GameObject.Instantiate(_levelData.LevelPrefab, _levelData.LevelPosition, Quaternion.identity);
             _level.transform.localPosition = _levelData.LevelPosition;
             _level.transform.localRotation = Quaternion.identity;
-            Services.Instance.Level.SetObject(_level);
+            var level = _level.GetComponent<Level>();
+            Services.Instance.Level.SetObject(level);
         }
     }
 }

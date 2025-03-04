@@ -1,17 +1,19 @@
-﻿using DG.Tweening;
+﻿using Data;
+using DG.Tweening;
 using Helpers;
 using Helpers.Managers;
 using UnityEngine;
 
 namespace Behaviours
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     sealed class MovableObject : MonoBehaviour, IMovable, IItem, IPointerDrag
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Color _dragColor;
+        [SerializeField] private ItemData _itemData;
 
         private Color _defaultColor;
         private bool _dragging;
@@ -40,9 +42,8 @@ namespace Behaviours
 
         private void Initialize()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _collider = GetComponent<Collider2D>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if(_rigidbody == null) { _rigidbody = GetComponent<Rigidbody2D>(); }
+            if (_collider == null) { _collider = GetComponent<Collider2D>(); }
             _defaultColor = _spriteRenderer.color;
         }
         private void SetDefaultValues()
@@ -65,7 +66,7 @@ namespace Behaviours
 
         public void Move(Vector3 movement)
         {
-            transform.DOMove(movement, 0.2f);
+            transform.DOMove(movement, _itemData.MovementDuration);
         }
 
         #endregion
@@ -83,7 +84,8 @@ namespace Behaviours
             _collider.isTrigger = true;
 
             _spriteRenderer.sortingOrder = shelfSpace.ItemRenderOrder;
-            transform.position = shelfSpace.ItemTransform.position;
+            transform.DOMove(shelfSpace.ItemTransform.position,
+                _itemData.PutOnsShelfDuration).SetEase(_itemData.PutInShelfEase);
         }
         public void RemoveFromShelf()
         {

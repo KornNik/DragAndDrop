@@ -15,33 +15,9 @@ namespace Inputs
             EnhancedTouchSupport.Enable();
         }
 
-        public override void UpdateControll()
-        {
-            if (Touch.Touch.activeTouches.Count > 0)
-            {
-                Debug.Log("Touch");
-                _touch = Touch.Touch.fingers.FirstOrDefault();
-
-                if (_movableObject == null)
-                {
-                    SetMovable();
-                }
-                else
-                {
-                    SetPosition();
-                }
-            }
-            else
-            {
-                if (_movableObject != null)
-                {
-                    MovableRelease();
-                }
-            }
-        }
-
         protected override Vector2 GetScreenInputPosition()
         {
+            _touch = Touch.Touch.fingers.FirstOrDefault();
             var inputTouchPosition = _touch.currentTouch.screenPosition;
             var inputTouchPositionWithDepth = new Vector3(inputTouchPosition.x,
                 inputTouchPosition.y, Mathf.Abs(Camera.transform.position.z));
@@ -51,9 +27,14 @@ namespace Inputs
 
         protected override Ray GetScreenInputRay()
         {
+            _touch = Touch.Touch.fingers.FirstOrDefault();
             var inputTouchPosition = _touch.currentTouch.screenPosition;
             var ray = Camera.ScreenPointToRay(inputTouchPosition);
             return ray;
+        }
+        protected override bool IsInputTouch()
+        {
+            return Touch.Touch.activeTouches.Count > 0;
         }
     }
 }

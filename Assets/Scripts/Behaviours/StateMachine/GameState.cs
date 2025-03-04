@@ -1,7 +1,6 @@
 ﻿using Helpers;
 using Inputs;
 using UI;
-using UnityEngine;
 
 namespace Behaviours
 {
@@ -10,7 +9,8 @@ namespace Behaviours
         private BaseInputs _inputs;
         public GameState(GameStateController stateController) : base(stateController)
         {
-            _inputs = new InputFactory().GetInputs();
+            _inputs = new TouchScreenInput();
+            //_inputs = new InputFactory().GetInputs();
         }
 
         public override void EnterState()
@@ -24,6 +24,7 @@ namespace Behaviours
 
         public override void LogicFixedUpdate()
         {
+
         }
 
         public override void LogicUpdate()

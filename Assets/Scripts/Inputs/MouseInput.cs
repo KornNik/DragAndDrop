@@ -10,28 +10,6 @@ namespace Inputs
             base.Initialization();
         }
 
-        public override void UpdateControll()
-        {
-            if (Mouse.current.leftButton.IsPressed())
-            {
-                if (_movableObject == null)
-                {
-                    SetMovable();
-                }
-                else
-                {
-                    SetPosition();
-                }
-            }
-            if(Mouse.current.leftButton.wasReleasedThisFrame)
-            {
-                if (_movableObject != null)
-                {
-                    MovableRelease();
-                }
-            }
-        }
-
         protected override Vector2 GetScreenInputPosition()
         {
             var inputMousePosition = Mouse.current.position.ReadValue();
@@ -47,6 +25,18 @@ namespace Inputs
             var ray = Camera.ScreenPointToRay(inputMousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 1000, Color.yellow);
             return ray;
+        }
+        protected override bool IsInputTouch()
+        {
+            if (Mouse.current.leftButton.IsPressed())
+            {
+                return true;
+            }
+            else if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                return false;
+            }
+            return false;
         }
     }
 }

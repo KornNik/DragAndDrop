@@ -233,17 +233,6 @@
                 },
                 {
                     "name": "",
-                    "id": "391f4962-6848-4cb0-a827-2c0b48759ace",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d9923671-6b1b-4ccc-b6c5-e16b142ece6c",
                     "path": "<Joystick>/{Hatswitch}",
                     "interactions": "",

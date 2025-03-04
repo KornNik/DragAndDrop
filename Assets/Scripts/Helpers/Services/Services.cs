@@ -17,7 +17,7 @@ namespace Helpers
         public Service<ITimeController> TimeController { get; private set; }
         public Service<DatasBundle> DatasBundle { get; private set; }
         public Service<ILevelLoader> LevelLoader { get; private set; }
-        public Service<GameObject> Level { get; private set; }
+        public Service<Level> Level { get; private set; }
         public Service<GameStateBehaviour> GameStateBehavior { get; private set; }
         public Service<DataResourcePrefabs> DataResourcePrefabs { get; private set; }
         public Service<InputActions> Inputs { get; private set; }
@@ -38,7 +38,7 @@ namespace Helpers
             GameStateBehavior = new Service<GameStateBehaviour>();
             DataResourcePrefabs = new Service<DataResourcePrefabs>();
             Inputs = new Service<InputActions>();
-            Level = new Service<GameObject>();
+            Level = new Service<Level>();
         }
 
     }
