@@ -15,3 +15,4 @@ MonoBehaviour:
   _putInShelfEase: 0
   _putOnsShelfDuration: 1
   _movementDuration: 0.3
+  _dragColor: {r: 0.9245283, g: 0.3532396, b: 0.3532396, a: 0.7882353}

@@ -36,7 +36,7 @@ namespace Controllers
 
             _audioSourcePool = new AudioSourcePool();
             _backgroundMusic = new BackgroundMusic();
-            _audioEventsHandler = new AudioEventsHandler();
+            _audioEventsHandler = new AudioEventsHandler(this);
             _eventSubscriptionWrapper = new EventSubscriptionWraper();
         }
         private void FillSubscriptions()

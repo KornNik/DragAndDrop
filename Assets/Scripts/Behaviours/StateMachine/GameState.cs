@@ -9,8 +9,7 @@ namespace Behaviours
         private BaseInputs _inputs;
         public GameState(GameStateController stateController) : base(stateController)
         {
-            _inputs = new TouchScreenInput();
-            //_inputs = new InputFactory().GetInputs();
+            _inputs = new InputFactory().GetInputs();
         }
 
         public override void EnterState()

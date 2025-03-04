@@ -7,9 +7,9 @@ namespace Behaviours
     {
         private IAudioPlayer _audioPlayer;
 
-        public AudioEventsHandler()
+        public AudioEventsHandler(IAudioPlayer audioPlayer)
         {
-            _audioPlayer = Services.Instance.AudioPlayer.ServicesObject;
+            _audioPlayer = audioPlayer;
         }
 
         public void OnEventTrigger(MakeSoundEvent eventType)

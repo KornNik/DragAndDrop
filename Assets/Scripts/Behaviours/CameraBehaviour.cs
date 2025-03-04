@@ -31,7 +31,7 @@ namespace Behaviours
             var cameraPosition = _camera.transform.position;
             var finalCameraMovement = cameraPosition.x + movement.x;
             var clampPosition = Mathf.Clamp(finalCameraMovement, _leftLimit, _rightLimit);
-            transform.DOMoveX(clampPosition + movement.x, _cameraData.CameraMoveDuration).SetEase(Ease.Linear);
+            transform.DOMoveX(clampPosition, _cameraData.CameraMoveDuration).SetEase(Ease.Linear);
         }
 
         private void SetLimits()

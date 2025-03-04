@@ -12,7 +12,6 @@ namespace Behaviours
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] private Color _dragColor;
         [SerializeField] private ItemData _itemData;
 
         private Color _defaultColor;
@@ -55,7 +54,7 @@ namespace Behaviours
         }
         private void SetDraggingValues()
         {
-            _spriteRenderer.color = _dragColor;
+            _spriteRenderer.color = _itemData.DragColor;
             _rigidbody.isKinematic = true;
             _rigidbody.velocity = Vector3.zero;
             _dragging = true;
